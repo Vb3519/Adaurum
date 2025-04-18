@@ -3,4 +3,848 @@
   padding: 0;
   box-sizing: border-box;
   list-style: none;
+  // font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
+}
+
+.app-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: white;
+}
+
+/* ------------------------------------------------------------------------------------------------------- */
+/* ----------------------------------------------- ХЕАДЕР: ----------------------------------------------- */
+/* ------------------------------------------------------------------------------------------------------- */
+
+.app-page__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: white;
+}
+
+.app-header__row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.header-row__label__left {
+  color: #ee26c2;
+}
+
+.header-row__label__right {
+  color: #000000;
+}
+
+.header-row__label__left,
+.header-row__label__right {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.header-row__user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.header-user-info__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.header-user-info__details__email {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.header-user-info__details__email__label {
+  display: none;
+}
+
+.header-user-info__details__revenue {
+  font-size: 12px;
+  font-weight: 500;
+  color: #797979;
+}
+
+.header-user-info__details__revenue__label {
+  display: none;
+}
+
+.header-user-info__actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.user-info-options__more,
+.user-info-options__logout {
+  display: flex;
+  padding: 0.5rem;
+  background-color: #f5f5f5;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.app-header__info-btn-grp {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.info-btn-grp__btn {
+  padding: 0.7rem;
+  background-color: #cbcbcb;
+  border: none;
+  border-radius: 0.3rem;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+/* ----------------------------------------------- МЕИН: ----------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------------- */
+.app-page__main {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.app-main__all-files {
+  // display: none;
+  display: flex;
+  flex-direction: column;
+
+  // padding: 1rem;
+  // border-radius: 20px;
+  // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);
+  background-color: white;
+}
+
+.all-files__title {
+  padding-inline: 1rem;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.all-files__plans-and-reports-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* МЕДИАПЛАНЫ: */
+/* --------------------------------------- */
+.all-files__media-plans,
+.all-files__reports {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.media-plans-box__title,
+.reports-box__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.media-plans-box__title > i,
+.reports-box__title > i {
+  padding: 0.5rem 0.7rem;
+}
+
+.media-plans-box__title__text,
+.reports-box__title__text {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.media-plans-box__list,
+.reports-box__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.media-plans-list__elem,
+.reports-list__elem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.media-plans-list__elem__company,
+.reports-list__elem__company {
+  display: flex;
+  gap: 0.2rem;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 0.5rem;
+}
+
+.media-plans-company__name,
+.reports-company__name {
+  font-size: 15px;
+}
+
+.media-plans-list__elem__company > i,
+.reports-list__elem__company > i {
+  padding: 0.5rem;
+}
+
+.media-plans-list__elem__rdy,
+.reports-list__elem__dev {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.media-plans-list__elem__rdy > i,
+.reports-list__elem__dev > i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #19aa31;
+  color: white;
+  font-size: 10px;
+}
+
+.reports-list__elem__dev.report-dev-process > i {
+  background-color: #949494;
+}
+
+.media-plans-company__download,
+.reports-company__download {
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.3rem;
+  background-color: #f4d4ed;
+}
+
+.reports-company__download.download-process {
+  background-color: #949494;
+  color: white;
+}
+
+.media-plans-company__download,
+.reports-company__download:hover {
+  cursor: pointer;
+}
+
+.media-plan-elem-rdy__text,
+.reports-elem-dev__text {
+  font-size: 12px;
+  color: #525252;
+}
+
+.media-plans-box__show-more-btn,
+.reports-box__show-more-btn {
+  margin-left: auto;
+  border: none;
+  color: #ee26c2;
+  font-size: 15px;
+  background-color: white;
+}
+
+.media-plans-box__show-more-btn,
+.reports-box__show-more-btn:hover {
+  cursor: pointer;
+}
+
+/* ОТЧЕТЫ: */
+/* --------------------------------------- */
+
+/* ЗАГЛУШКА (медиапланы и отчеты): */
+/* --------------------------------------- */
+.all-files__cap {
+  display: flex;
+  flex-direction: column;
+  background-color: #ebebeb;
+  padding: 3rem;
+  margin-top: 1rem;
+  gap: 1rem;
+  align-items: center;
+}
+
+.files-cap__img-container {
+  width: 200px;
+}
+
+.files-cap__img-container > img {
+  width: 100%;
+}
+
+.files-cap__description {
+  text-align: center;
+  color: #000000;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 145%;
+}
+
+.app-main__chat-assistant-wrapper {
+  background-color: white;
+}
+
+.app-main__assistant {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.assistant-title__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.assistant-title__info__title-text {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.assistant-title__info__assitant-name {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.assistant-title__info__assitant-name > p {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.assistant-title__info__assitant-name > span {
+  font-size: 15px;
+  font-weight: 400;
+  color: #525252;
+}
+
+.assistant-title__badge {
+  display: flex;
+  padding: 0.5rem;
+  background-color: #f5f5f5;
+  border-radius: 50%;
+  margin-bottom: auto;
+  cursor: pointer;
+}
+
+.assistant-title__badge > i {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ЧАТ: */
+/* --------------------------------------- */
+.app-main__chat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ebebeb;
+}
+
+.app-chat__descrip-and-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  gap: 1rem;
+}
+
+.chat-descrip-and-actions__img-container > img {
+  width: 130px;
+}
+
+.chat-descrip-and-actions__descrip-text {
+  text-align: center;
+  color: #000000;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 145%;
+}
+
+.app-chat__reports {
+  margin-left: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chat-reports__btn {
+  font-weight: 500;
+  font-size: 14px;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.get-reports-btn {
+  width: 80%;
+  margin-left: auto;
+  background-color: #2676ee;
+  color: #ffffff;
+}
+
+.get-media-plans-btn {
+  background-color: #ee26c2;
+  color: #ffffff;
+}
+
+/* ТЕЛО ЧАТА: */
+/* --------------------------------------- */
+.app-chat__body__wrapper {
+  padding: 1rem;
+  padding-bottom: 2rem;
+  width: 100%;
+}
+
+.app-chat__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  background-color: white;
+  border-radius: 1rem;
+}
+
+.chat-body__text-area {
+  width: 100%;
+  min-height: 144px;
+  outline: none;
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem;
+  resize: none;
+}
+
+.chat-body__actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.chat-actions__add {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem;
+  color: #9f9f9f;
+  font-size: 22px;
+}
+
+.chat-actions__add__file,
+.chat-actions__add__img:hover {
+  cursor: pointer;
+}
+
+.chat-actions__send-msg {
+  display: flex;
+  padding: 1rem;
+  border-radius: 50%;
+  background-color: #ee26c2;
+  color: whitesmoke;
+}
+
+.chat-actions__send-msg:hover {
+  cursor: pointer;
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+/* ----------------------------------------------- ФУТЕР: ---------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------------- */
+.app-page__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.app-footer__row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.app-footer__row > a {
+  color: #525252;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.footer-row__label {
+  font-size: 26px;
+  font-weight: 600;
+  color: #c3c3c3;
+}
+
+.footer-row__lang {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 15px;
+  color: #525252;
+}
+
+.footer-row__lang > i {
+  color: #292d32;
+}
+
+.footer-row__lang__list {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.footer-row__email,
+.footer-row__socials {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-row__email > i {
+  color: #292d32;
+}
+
+.footer-row__email__text {
+  font-size: 15px;
+  color: #525252;
+}
+
+.footer-row__socials {
+  display: flex;
+  align-items: center;
+}
+
+.footer-row__socials__elem {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: gray;
+}
+
+.footer-row__socials__elem > i {
+  width: 16px;
+  height: 16px;
+}
+
+.socials-whatsapp > i {
+  padding-left: 1px;
+}
+
+.footer-row__socials__elem:hover {
+  cursor: pointer;
+}
+
+.socials-telegram {
+  background-color: #229ed9;
+  color: whitesmoke;
+}
+
+.socials-whatsapp {
+  background-color: #20b038;
+  color: whitesmoke;
+}
+
+.footer-row__author {
+  font-size: 14px;
+  color: #525252;
+  opacity: 0.5;
+}
+
+/* -------------------------------------------------------------------------------------------------- */
+/* ------------------------------------------- 450px ------------------------------------------------ */
+/* -------------------------------------------------------------------------------------------------- */
+@media (min-width: 450px) {
+  .app-page__main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-inline: 1rem;
+  }
+
+  .app-main__all-files,
+  .app-main__chat-assistant-wrapper {
+    padding: 1rem;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  .app-main__all-files {
+    gap: 1rem;
+  }
+
+  .app-main__assistant {
+    padding-top: 0;
+  }
+
+  .header-user-info__details {
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  .header-user-info__details__email {
+    line-height: 20px;
+  }
+
+  .all-files__title,
+  .all-files__media-plans,
+  .all-files__reports {
+    padding: 0;
+  }
+
+  .all-files__cap,
+  .app-main__chat {
+    border-radius: 20px;
+  }
+
+  .all-files__cap {
+    background-color: white;
+  }
+
+  .app-chat__body__wrapper {
+    padding: 0;
+    border: 2px solid #ebebeb;
+    border-radius: 20px;
+  }
+}
+
+/* -------------------------------------------------------------------------------------------------- */
+/* ------------------------------------------- 768px ------------------------------------------------ */
+/* -------------------------------------------------------------------------------------------------- */
+@media (min-width: 768px) {
+  .app-page {
+    background-color: #f5f5f5;
+    gap: 1.5rem;
+  }
+
+  .app-page__header {
+    padding-inline: 2rem;
+  }
+
+  .app-header__row {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .header-user-info__details {
+    gap: 1.5rem;
+    margin-right: 2rem;
+  }
+
+  .header-user-info__details__email,
+  .header-user-info__details__revenue {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .header-user-info__details__email__label,
+  .header-user-info__details__revenue__label {
+    display: flex;
+    padding: 0.6rem;
+    border-radius: 50%;
+    background-color: #ee26c2;
+    color: whitesmoke;
+  }
+
+  .header-user-info__details__email__label:hover,
+  .header-user-info__details__revenue__label:hover {
+    cursor: pointer;
+  }
+
+  .header-user-info__details__email__label > i {
+    width: 16px;
+    height: 16px;
+    padding-left: 1px;
+  }
+
+  .header-user-info__details__revenue {
+    font-size: 16px;
+    color: #000000;
+    font-weight: 600;
+  }
+
+  .header-user-info__details__revenue > span {
+    display: none;
+  }
+
+  .app-header__info-btn-grp {
+    display: none;
+  }
+
+  /* МЕИН: */
+  /* ------------------------------------------- */
+  .app-page__main {
+    padding-inline: 2rem;
+  }
+
+  .app-main__all-files {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  .all-files__plans-and-reports-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .all-files__media-plans,
+  .all-files__reports {
+    flex-basis: 50%;
+  }
+
+  .all-files__cap {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .files-cap__img-container {
+    width: 250px;
+  }
+
+  .files-cap__description {
+    font-size: 16px;
+  }
+
+  .assistant-title__info {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .assistant-title__info__assitant-name {
+    margin-left: auto;
+    margin-right: 2rem;
+  }
+
+  .chat-descrip-and-actions__img-container > img {
+    width: 180px;
+  }
+
+  .chat-descrip-and-actions__descrip-text {
+    font-size: 16px;
+  }
+
+  .app-chat__reports {
+    flex-direction: row-reverse;
+    margin: 0;
+    margin-right: auto;
+  }
+
+  .chat-reports__btn {
+    font-size: 16px;
+  }
+
+  .get-media-plans-btn {
+    text-wrap: nowrap;
+  }
+
+  /* ФУТЕР: */
+  /* ------------------------------------------- */
+  .app-page__footer {
+    padding: 2rem;
+    background-color: #ebebeb;
+  }
+
+  .app-footer__row {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .footer-row__privacy {
+    padding-top: 10px;
+    font-size: 15px;
+  }
+
+  .app-page__footer div:nth-child(2) {
+    justify-content: space-between;
+  }
+}
+
+/* -------------------------------------------------------------------------------------------------- */
+/* ------------------------------------- 1024px и 1280px -------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------- */
+@media (min-width: 1024px) {
+  .app-page__header,
+  .app-page__main,
+  .app-page__footer {
+    padding-inline: 4rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .app-page,
+  .app-page__main {
+    gap: 2rem;
+  }
+
+  .app-page__header,
+  .app-page__main,
+  .app-page__footer {
+    padding-inline: 6rem;
+  }
+}
+
+/* -------------------------------------------------------------------------------------------------- */
+/* ---------------------------------------- 1440px и 1536px ----------------------------------------- */
+/* -------------------------------------------------------------------------------------------------- */
+@media (min-width: 1440px) {
+  .app-page__main {
+    flex-direction: row;
+    margin-bottom: 2rem;
+  }
+
+  .app-main__all-files {
+    flex-basis: 30%;
+  }
+
+  .all-files__plans-and-reports-wrapper {
+    flex-direction: column;
+  }
+
+  .all-files__cap {
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+
+  .files-cap__description {
+    text-align: center;
+  }
+
+  .app-main__chat-assistant-wrapper {
+    flex-basis: 70%;
+  }
+}
+
+@media (min-width: 1536px) {
+  .app-page__header,
+  .app-page__main,
+  .app-page__footer {
+    padding-inline: 10rem;
+  }
 }

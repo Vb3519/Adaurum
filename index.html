@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pink Chiken App</title>
-    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/style.scss" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -68,14 +68,14 @@
         <section class="app-main__all-files all-files">
           <h2 class="all-files__title">Файлы</h2>
           <!-- заглушка (при отсутствии медиапланов и отчетов) -->
-          <!-- <div class="all-files__cap files-cap">
+          <div class="all-files__cap files-cap">
             <div class="files-cap__img-container">
               <img src="./src/assets/folder_img.svg" alt="folder" />
             </div>
             <p class="files-cap__description">
               Закажи у личного помощника медиаплан. Он появится в этом разделе.
             </p>
-          </div> -->
+          </div>
           <!----------------------------------------------------->
 
           <div
@@ -89,61 +89,8 @@
               </div>
 
               <ul class="media-plans-box__list media-plans-list">
-                <li class="media-plans-list__elem">
-                  <div
-                    class="media-plans-list__elem__company media-plans-company"
-                  >
-                    <i class="fa-regular fa-folder-closed"></i>
-                    <p class="media-plans-company__name">Companyname 11/23</p>
-                    <div class="media-plans-company__download">
-                      <i class="fa-solid fa-download"></i>
-                    </div>
-                  </div>
-
-                  <div class="media-plans-list__elem__rdy media-plan-elem-rdy">
-                    <i class="fa-solid fa-check"></i>
-                    <p class="media-plan-elem-rdy__text">
-                      Медиаплан от 18.04.2025 готов
-                    </p>
-                  </div>
-                </li>
-                <li class="media-plans-list__elem">
-                  <div
-                    class="media-plans-list__elem__company media-plans-company"
-                  >
-                    <i class="fa-regular fa-folder-closed"></i>
-                    <p class="media-plans-company__name">Companyname 11/23</p>
-                    <div class="media-plans-company__download">
-                      <i class="fa-solid fa-download"></i>
-                    </div>
-                  </div>
-                </li>
-                <li class="media-plans-list__elem">
-                  <div
-                    class="media-plans-list__elem__company media-plans-company"
-                  >
-                    <i class="fa-regular fa-folder-closed"></i>
-                    <p class="media-plans-company__name">Companyname 11/23</p>
-                    <div class="media-plans-company__download">
-                      <i class="fa-solid fa-download"></i>
-                    </div>
-                  </div>
-                </li>
-                <li class="media-plans-list__elem">
-                  <div
-                    class="media-plans-list__elem__company media-plans-company"
-                  >
-                    <i class="fa-regular fa-folder-closed"></i>
-                    <p class="media-plans-company__name">Companyname 11/23</p>
-                    <div class="media-plans-company__download">
-                      <i class="fa-solid fa-download"></i>
-                    </div>
-                  </div>
-                </li>
+                <!-- список запрашиваемых медиапланов -->
               </ul>
-              <button class="media-plans-box__show-more-btn">
-                Показать еще
-              </button>
             </div>
 
             <!-- отчеты: -->
@@ -153,42 +100,8 @@
                 <i class="fa-solid fa-chevron-up"></i>
               </div>
               <ul class="reports-box__list reports-list">
-                <li class="reports-list__elem">
-                  <div class="reports-list__elem__company reports-company">
-                    <i class="fa-regular fa-folder-closed"></i>
-                    <p class="reports-company__name">Companyname 11/23</p>
-                    <div class="reports-company__download download-process">
-                      <i class="fa-solid fa-arrow-rotate-left"></i>
-                    </div>
-                  </div>
-
-                  <div
-                    class="reports-list__elem__dev reports-elem-dev report-dev-process"
-                  >
-                    <i class="fa-solid fa-exclamation"></i>
-                    <p class="reports-elem-dev__text">Отчет формируется</p>
-                  </div>
-                </li>
-                <li class="reports-list__elem">
-                  <div class="reports-list__elem__company reports-company">
-                    <i class="fa-regular fa-folder-closed"></i>
-                    <p class="reports-company__name">Companyname 11/23</p>
-                    <div class="reports-company__download">
-                      <i class="fa-solid fa-download"></i>
-                    </div>
-                  </div>
-                </li>
-                <li class="reports-list__elem">
-                  <div class="reports-list__elem__company reports-company">
-                    <i class="fa-regular fa-folder-closed"></i>
-                    <p class="reports-company__name">Companyname 11/23</p>
-                    <div class="reports-company__download">
-                      <i class="fa-solid fa-download"></i>
-                    </div>
-                  </div>
-                </li>
+                <!-- список запрашиваемых отчетов -->
               </ul>
-              <button class="reports-box__show-more-btn">Показать еще</button>
             </div>
           </div>
         </section>
@@ -224,6 +137,37 @@
                 вопросу о нашем сервисе и узнать о ходе работы
               </p>
             </div>
+
+            <!-- <div class="app-chat__messages">
+              <div class="app-chat__messages__message assitant-msg">
+                <div class="assitant-msg__body">
+                  <div class="assitant-msg__body__photo">
+                    <i class="fa-regular fa-user"></i>
+                  </div>
+                  <div class="assitant-msg__body__text">
+                    <span
+                      >Отчет готов! Вы можете ознакомиться с ним выше.
+                    </span>
+                  </div>
+                </div>
+                <div class="assitant-msg__info">
+                  <span class="assitant-msg__from">Jim</span>
+                  <span class="assitant-msg__info__time">20:43</span>
+                </div>
+              </div>
+
+              <div class="app-chat__messages__message my-msg">
+                <div class="my-msg__body">
+                  <div class="my-msg__body__text">
+                    <span>Пример моего сообщения в чате. </span>
+                  </div>
+                </div>
+                <div class="my-msg__info">
+                  <span class="my-msg__info__time">20:43</span>
+                </div>
+              </div>
+            </div> -->
+
             <div class="app-chat__reports chat-reports">
               <button class="chat-reports__btn get-reports-btn">
                 Заказать отчет

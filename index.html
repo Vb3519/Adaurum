@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pink Chiken App</title>
-    <link rel="stylesheet" href="./styles/style.scss" />
+    <link rel="stylesheet" href="./styles/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -118,13 +118,23 @@
                 <span>JimDavidson@adaurum.ru</span>
               </div>
             </div>
-            <div class="assistant-title__badge">
+            <button class="assistant-title__badge">
               <i class="fa-solid fa-ellipsis-vertical"></i>
-            </div>
+            </button>
+            <!-- меню обратной связи чата -->
+            <ul class="assistant-title__options">
+              <li class="assistant-title__options__elem">
+                <a src="#">Обратная связь о работе сервиса</a>
+              </li>
+              <li class="assistant-title__options__elem">
+                <a src="#">Сменить помощника</a>
+              </li>
+            </ul>
           </div>
 
           <!-- чат с администратором: -->
           <div class="app-main__chat app-chat">
+            <!-- заглушка для чата: -->
             <div class="app-chat__descrip-and-actions chat-descrip-and-actions">
               <div class="chat-descrip-and-actions__img-container">
                 <img
@@ -138,35 +148,7 @@
               </p>
             </div>
 
-            <!-- <div class="app-chat__messages">
-              <div class="app-chat__messages__message assitant-msg">
-                <div class="assitant-msg__body">
-                  <div class="assitant-msg__body__photo">
-                    <i class="fa-regular fa-user"></i>
-                  </div>
-                  <div class="assitant-msg__body__text">
-                    <span
-                      >Отчет готов! Вы можете ознакомиться с ним выше.
-                    </span>
-                  </div>
-                </div>
-                <div class="assitant-msg__info">
-                  <span class="assitant-msg__from">Jim</span>
-                  <span class="assitant-msg__info__time">20:43</span>
-                </div>
-              </div>
-
-              <div class="app-chat__messages__message my-msg">
-                <div class="my-msg__body">
-                  <div class="my-msg__body__text">
-                    <span>Пример моего сообщения в чате. </span>
-                  </div>
-                </div>
-                <div class="my-msg__info">
-                  <span class="my-msg__info__time">20:43</span>
-                </div>
-              </div>
-            </div> -->
+            <div class="app-chat__messages"></div>
 
             <div class="app-chat__reports chat-reports">
               <button class="chat-reports__btn get-reports-btn">
@@ -177,10 +159,10 @@
               </button>
             </div>
 
-            <!-- окошко чата: -->
+            <!-- окошко отправки сообщений: -->
             <div class="app-chat__body__wrapper">
               <div class="app-chat__body chat-body">
-                <textarea class="chat-body__text-area"> </textarea>
+                <textarea class="chat-body__text-area"></textarea>
                 <div class="chat-body__actions chat-actions">
                   <div class="chat-actions__add">
                     <i
@@ -213,7 +195,7 @@
             <ul class="footer-row__lang__list footer-lang-list">
               <li class="footer-lang-list__elem">RU</li>
               <li class="footer-lang-list__elem">EN</li>
-              <li>TUR</li>
+              <li class="footer-lang-list__elem">TUR</li>
             </ul>
           </div>
           <div class="footer-row__email">

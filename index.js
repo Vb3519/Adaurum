@@ -1,5 +1,7 @@
 import './styles/style.scss';
 
+// ВИД:
+// ------------------------------------
 import {
   // Элементы интерфейса:
   showMediaPlansBtn,
@@ -7,7 +9,11 @@ import {
   getReportsBtn,
   getMediaPlansBtn,
   allFilesCap,
+  toggleAssistantOptionsBtn,
   mediaPlansAndReportsWrapper,
+  chatTextArea,
+  chatSendMsgBtn,
+
   // Функции рендера:
   handleStickyNavMenuOnScroll,
   toggleAllfilesContainer,
@@ -19,11 +25,11 @@ import {
   toggleReportsList,
   showMediaplansListBtn,
   showReportsListBtn,
+  toggelAssistantOptionsMenu,
+  addAssitantMsgToChat,
+  addUserMsgToChat,
+  renderChatBorderOnFocus,
 } from './src/view';
-
-document.addEventListener('scroll', handleStickyNavMenuOnScroll);
-showMediaplansListBtn.addEventListener('click', toggleMediaplansList);
-showReportsListBtn.addEventListener('click', toggleReportsList);
 
 // Состояние всего приложения:
 // ------------------------------------
@@ -41,11 +47,12 @@ const appState = {
 // ------------------------------------
 const handleGetReports = async () => {
   if (appState.isReportsLoaded) {
-    console.log('Данные по отчетам уже получены!');
+    alert('Данные по отчетам уже загружены!');
     return;
   }
 
-  console.log('Обработка запроса на получение отчетов!');
+  addAssitantMsgToChat('Обработка Вашего запроса на получение отчетов!');
+
   getReportsBtn.disabled = true;
   const getReportsTimer = 3000;
   appState.isReportsLoading = true;
@@ -58,26 +65,24 @@ const handleGetReports = async () => {
 
       hideElem(allFilesCap); // убирается "заглушка" отчетов и медиапланов
       showElem(mediaPlansAndReportsWrapper);
-
-      console.log('Обработка запроса на получение отчетов завершена!');
       resolve();
     }, getReportsTimer);
   });
 
+  addAssitantMsgToChat('Отчеты загружены!');
   renderReportsList(appState.isReportsLoaded);
   renderMediaplansList(appState.isMediaPlansLoaded);
 };
-getReportsBtn.addEventListener('click', handleGetReports);
 
 // Загрузка медиапланов:
 // ------------------------------------
 const handleGetMediaplans = async () => {
   if (appState.isMediaPlansLoaded) {
-    console.log('Данные по медиапланам уже получены!');
+    alert('Данные по медиапланам уже загружены!');
     return;
   }
 
-  console.log('Обработка запроса на получение медиапланов!');
+  addAssitantMsgToChat('Обработка Вашего запроса на получение медиапланов!');
   getMediaPlansBtn.disabled = true;
   const getMediaPlansTimer = 3000;
   appState.isMediaPlanLoading = true;
@@ -91,16 +96,62 @@ const handleGetMediaplans = async () => {
       hideElem(allFilesCap); // убирается "заглушка" отчетов и медиапланов
       showElem(mediaPlansAndReportsWrapper);
 
-      console.log('Обработка запроса на получение медиапланов завершена!');
       resolve();
     }, getMediaPlansTimer);
   });
 
+  addAssitantMsgToChat('Медиапланы загружены!');
   renderReportsList(appState.isReportsLoaded);
   renderMediaplansList(appState.isMediaPlansLoaded);
 };
-getMediaPlansBtn.addEventListener('click', handleGetMediaplans);
 
-// Для мобильных устройств: отображение / скрытие файлов с отчетами
+// Добавление в чат сообщения пользователя:
+// ------------------------------------
+const handleAddUserMsgToChat = () => {
+  const userMessage = chatTextArea.value;
+
+  if (userMessage.length > 0) {
+    addUserMsgToChat(userMessage);
+    chatTextArea.value = '';
+  } else {
+    alert('Пожалуйста введите Ваше сообщение!');
+  }
+};
+
+// Обработчики событий:
+// ------------------------------------
+document.addEventListener('scroll', handleStickyNavMenuOnScroll);
+
+// Для мобильных устройств: отображение / скрытие всего поля "Файлы"
 showReportsBtn.addEventListener('click', toggleAllfilesContainer);
 showMediaPlansBtn.addEventListener('click', toggleAllfilesContainer);
+
+// Отображение / скрытие списков медиапланов или отчетов:
+showMediaplansListBtn.addEventListener('click', toggleMediaplansList);
+showReportsListBtn.addEventListener('click', toggleReportsList);
+
+// Скачать списки медиапланов или отчетов:
+getReportsBtn.addEventListener('click', handleGetReports);
+getMediaPlansBtn.addEventListener('click', handleGetMediaplans);
+
+// Отображение / скрытие меню обратной связи по ассистенту:
+toggleAssistantOptionsBtn.addEventListener('click', toggelAssistantOptionsMenu);
+
+// Чат (отправка сообщений):
+chatSendMsgBtn.addEventListener('click', handleAddUserMsgToChat); // отправка сообщения по клику
+
+document.addEventListener('keydown', (event) => {
+  // отправка сообщения при нажатии "Enter"
+  if (event.key === 'Enter') {
+    handleAddUserMsgToChat();
+  }
+});
+
+// Рендер рамки чата при фокусе:
+chatTextArea.addEventListener('focus', () => {
+  renderChatBorderOnFocus(true);
+});
+
+chatTextArea.addEventListener('blur', () => {
+  renderChatBorderOnFocus(false);
+});

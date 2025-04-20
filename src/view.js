@@ -74,22 +74,25 @@ export const handleStickyNavMenuOnScroll = () => {
 
 // Для мобильных устройств: отображение / скрытие файлов с отчетами
 export const toggleAllfilesContainer = () => {
-  console.log('Показываем все файлы');
   allFilesContainer.classList.toggle('active-elem');
 };
 
 // Toggle меню ассистента (обратная связь):
-export const toggelAssistantOptionsMenu = () => {
+export const toggleAssistantOptionsMenu = () => {
   assistantOptionsMenu.classList.toggle('active-elem');
 };
 
-// Отобразить или скрыть элемент:
-export const showElem = (elem) => {
-  elem.classList.add('active-elem');
-};
-
-export const hideElem = (elem) => {
-  elem.classList.add('hidden-elem');
+// Отобразить или скрыть элемент (для эл-ов, которые по-умолчанию отображаются или скрыты):
+export const toggleElemVisibility = (elem, option) => {
+  if (option) {
+    // отображаем элемент:
+    elem.classList.remove('hidden-elem');
+    elem.classList.add('active-elem');
+  } else {
+    // скрываем элемент:
+    elem.classList.add('hidden-elem');
+    elem.classList.remove('active-elem');
+  }
 };
 
 // Рендер списка медиапланов:
@@ -265,16 +268,17 @@ const createUserChatMsg = (userMsg) => {
 
 // Добавление сообщения в чат:
 export const addAssitantMsgToChat = (message) => {
-  hideElem(chatMessagesCap); // скрыть "заглушку" пустого чата и отобразить сообщение
-  showElem(chatMsgList);
+  toggleElemVisibility(chatMessagesCap, false); // скрыть "заглушку" пустого чата и отобразить чат
+  toggleElemVisibility(chatMsgList, true);
+
   const messageElem = createAssistantChatMsg(message);
 
   chatMsgList.append(messageElem);
 };
 
 export const addUserMsgToChat = (message) => {
-  hideElem(chatMessagesCap); // скрыть "заглушку" пустого чата и отобразить сообщение
-  showElem(chatMsgList);
+  toggleElemVisibility(chatMessagesCap, false); // скрыть "заглушку" пустого чата и отобразить чат
+  toggleElemVisibility(chatMsgList, true);
 
   const messageElem = createUserChatMsg(message);
 

@@ -17,15 +17,14 @@ import {
   // Функции рендера:
   handleStickyNavMenuOnScroll,
   toggleAllfilesContainer,
-  showElem,
-  hideElem,
+  toggleElemVisibility,
   renderMediaplansList,
   renderReportsList,
   toggleMediaplansList,
   toggleReportsList,
   showMediaplansListBtn,
   showReportsListBtn,
-  toggelAssistantOptionsMenu,
+  toggleAssistantOptionsMenu,
   addAssitantMsgToChat,
   addUserMsgToChat,
   renderChatBorderOnFocus,
@@ -34,13 +33,37 @@ import {
 // Состояние всего приложения:
 // ------------------------------------
 const appState = {
-  // отчеты:
-  isReportsLoading: false,
   isReportsLoaded: false,
-  // медиапланы:
-  isMediaPlanLoading: false,
   isMediaPlansLoaded: false,
-  chatMessages: [],
+  loadingTimer: 2000,
+};
+
+const fileTypes = {
+  reports: 'reports',
+  mediaplans: 'mediaplans',
+};
+
+// Общая функция для загрузки файлов:
+const loadFilesData = (btn, filesType) => {
+  btn.disabled = false;
+
+  if (filesType === 'reports') {
+    appState.isReportsLoaded = true;
+  }
+
+  if (filesType === 'mediaplans') {
+    appState.isMediaPlansLoaded = true;
+  }
+
+  toggleElemVisibility(allFilesCap, false);
+  toggleElemVisibility(mediaPlansAndReportsWrapper, true);
+};
+
+// Общая функция для отображения результатов загрузки:
+const showFilesLoadResult = (message) => {
+  addAssitantMsgToChat(message);
+  renderReportsList(appState.isReportsLoaded);
+  renderMediaplansList(appState.isMediaPlansLoaded);
 };
 
 // Загрузка отчетов:
@@ -54,24 +77,21 @@ const handleGetReports = async () => {
   addAssitantMsgToChat('Обработка Вашего запроса на получение отчетов!');
 
   getReportsBtn.disabled = true;
-  const getReportsTimer = 3000;
-  appState.isReportsLoading = true;
 
-  await new Promise((resolve, reject) => {
-    setTimeout(() => {
-      getReportsBtn.disabled = false;
-      appState.isReportsLoading = false;
-      appState.isReportsLoaded = true;
+  // имитация загрузки данных:
+  try {
+    await new Promise((resolve, reject) => {
+      setTimeout(() => {
+        loadFilesData(getReportsBtn, fileTypes.reports);
 
-      hideElem(allFilesCap); // убирается "заглушка" отчетов и медиапланов
-      showElem(mediaPlansAndReportsWrapper);
-      resolve();
-    }, getReportsTimer);
-  });
+        resolve();
+      }, appState.loadingTimer);
+    });
 
-  addAssitantMsgToChat('Отчеты загружены!');
-  renderReportsList(appState.isReportsLoaded);
-  renderMediaplansList(appState.isMediaPlansLoaded);
+    showFilesLoadResult('Отчеты загружены!');
+  } catch (error) {
+    console.log('Ошибка:', error.message);
+  }
 };
 
 // Загрузка медиапланов:
@@ -84,25 +104,21 @@ const handleGetMediaplans = async () => {
 
   addAssitantMsgToChat('Обработка Вашего запроса на получение медиапланов!');
   getMediaPlansBtn.disabled = true;
-  const getMediaPlansTimer = 3000;
-  appState.isMediaPlanLoading = true;
 
-  await new Promise((resolve, reject) => {
-    setTimeout(() => {
-      getMediaPlansBtn.disabled = false;
-      appState.isMediaPlanLoading = false;
-      appState.isMediaPlansLoaded = true;
+  // имитация загрузки данных:
+  try {
+    await new Promise((resolve, reject) => {
+      setTimeout(() => {
+        loadFilesData(getMediaPlansBtn, fileTypes.mediaplans);
 
-      hideElem(allFilesCap); // убирается "заглушка" отчетов и медиапланов
-      showElem(mediaPlansAndReportsWrapper);
+        resolve();
+      }, appState.loadingTimer);
+    });
 
-      resolve();
-    }, getMediaPlansTimer);
-  });
-
-  addAssitantMsgToChat('Медиапланы загружены!');
-  renderReportsList(appState.isReportsLoaded);
-  renderMediaplansList(appState.isMediaPlansLoaded);
+    showFilesLoadResult('Медиапланы загружены!');
+  } catch (error) {
+    console.log('Ошибка:', error.message);
+  }
 };
 
 // Добавление в чат сообщения пользователя:
@@ -135,7 +151,7 @@ getReportsBtn.addEventListener('click', handleGetReports);
 getMediaPlansBtn.addEventListener('click', handleGetMediaplans);
 
 // Отображение / скрытие меню обратной связи по ассистенту:
-toggleAssistantOptionsBtn.addEventListener('click', toggelAssistantOptionsMenu);
+toggleAssistantOptionsBtn.addEventListener('click', toggleAssistantOptionsMenu);
 
 // Чат (отправка сообщений):
 chatSendMsgBtn.addEventListener('click', handleAddUserMsgToChat); // отправка сообщения по клику

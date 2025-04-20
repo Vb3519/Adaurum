@@ -6,9 +6,20 @@
   font-family: 'Inter', sans-serif;
 }
 
-.app-page {
+/* Шрифты, цвета, паддинги*/
+@mixin flex-column {
   display: flex;
   flex-direction: column;
+}
+
+$main-pink-color: #ee26c2;
+$elem-shadow-strong: 0px 0px 10px rgba(0, 0, 0, 0.3);
+$font-size-sm: 14px;
+$font-size-md: 16px;
+$container-elem-padding: 1rem;
+
+.app-page {
+  @include flex-column;
   gap: 1rem;
   background-color: white;
 }
@@ -18,31 +29,28 @@
 /* ------------------------------------------------------------------------------------------------------- */
 
 .app-page__header {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   gap: 1rem;
-  padding: 1rem;
+  padding: $container-elem-padding;
   background-color: white;
 }
 
 .app-header__row {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   gap: 0.5rem;
 }
 
-.header-row__label__left {
-  color: #ee26c2;
-}
-
-.header-row__label__right {
-  color: #000000;
-}
-
-.header-row__label__left,
-.header-row__label__right {
+.header-row__label {
   font-size: 26px;
   font-weight: 600;
+
+  &__left {
+    color: $main-pink-color;
+  }
+
+  &__right {
+    color: #000000;
+  }
 }
 
 .header-row__user-info {
@@ -54,34 +62,33 @@
 }
 
 .header-user-info__details {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   gap: 0.2rem;
-}
 
-.header-user-info__details__email {
-  font-weight: 600;
-  font-size: 14px;
-}
+  &__email {
+    font-weight: 600;
+    font-size: $font-size-sm;
 
-.header-user-info__details__email__label {
-  display: none;
-}
+    &__label {
+      display: none;
+    }
+  }
 
-.header-user-info__details__revenue {
-  font-size: 12px;
-  font-weight: 500;
-  color: #797979;
-}
+  &__revenue {
+    font-size: 12px;
+    font-weight: 500;
+    color: #797979;
 
-.header-user-info__details__revenue__label {
-  display: none;
+    &__label {
+      display: none;
+    }
+  }
 }
 
 .header-user-info__actions {
   display: flex;
-  gap: 0.5rem;
   align-items: center;
+  gap: 0.5rem;
 }
 
 .user-info-options__more,
@@ -111,14 +118,14 @@
   border: none;
   border-radius: 0.3rem;
   font-weight: 600;
-  font-size: 14px;
+  font-size: $font-size-sm;
 }
 
 .media-plans-btn:hover {
   cursor: pointer;
   color: whitesmoke;
-  background-color: #ee26c2;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  background-color: $main-pink-color;
+  box-shadow: $elem-shadow-strong;
   transition: background-color 200ms ease-in, color 200ms ease-in,
     box-shadow 200ms ease-in;
 }
@@ -127,7 +134,7 @@
   cursor: pointer;
   color: whitesmoke;
   background-color: #2676ee;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: $elem-shadow-strong;
   transition: background-color 200ms ease-in, color 200ms ease-in,
     box-shadow 200ms ease-in;
 }
@@ -136,8 +143,7 @@
 /* ----------------------------------------------- МЕИН: ----------------------------------------------- */
 /* ----------------------------------------------------------------------------------------------------- */
 .app-page__main {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   gap: 2rem;
 }
 
@@ -164,8 +170,7 @@
 /* --------------------------------------- */
 .all-files__media-plans,
 .all-files__reports {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   gap: 1rem;
   padding-inline: 1rem;
 }
@@ -194,36 +199,29 @@
 .reports-box__title__text {
   font-size: 18px;
   font-weight: 600;
-  padding: 0.5rem 0.7rem;
+  padding: 0.5rem 0.2rem;
 }
 
 .media-plans-box__list,
 .reports-box__list {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   gap: 0.5rem;
 }
 
 .media-plans-list__elem,
 .reports-list__elem {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   gap: 0.5rem;
 }
 
 .media-plans-list__elem__company,
 .reports-list__elem__company {
   display: flex;
-  gap: 0.2rem;
   justify-content: space-between;
   align-items: center;
+  gap: 0.2rem;
   background-color: #f5f5f5;
   border-radius: 0.5rem;
-}
-
-.media-plans-company__name,
-.reports-company__name {
-  font-size: 15px;
 }
 
 .media-plans-list__elem__company > i,
@@ -254,6 +252,11 @@
   background-color: #949494;
 }
 
+.media-plans-company__name,
+.reports-company__name {
+  font-size: 15px;
+}
+
 .media-plans-company__download,
 .reports-company__download {
   padding: 0.5rem 0.7rem;
@@ -281,7 +284,7 @@
 .reports-box__show-more-btn {
   margin-left: auto;
   border: none;
-  color: #ee26c2;
+  color: $main-pink-color;
   font-size: 15px;
   background-color: white;
 }
@@ -293,10 +296,9 @@
 
 .reports-list-empty,
 .media-plans-list-empty {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  @include flex-column;
   align-items: center;
+  gap: 1rem;
 }
 
 .reports-list-empty > i,
@@ -310,7 +312,7 @@
   text-align: center;
   color: #000000;
   font-weight: 500;
-  font-size: 14px;
+  font-size: $font-size-sm;
   line-height: 145%;
 }
 
@@ -320,8 +322,7 @@
 /* ЗАГЛУШКА (медиапланы и отчеты): */
 /* --------------------------------------- */
 .all-files__cap {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   background-color: #ebebeb;
   padding: 3rem;
   margin-top: 1rem;
@@ -329,20 +330,22 @@
   align-items: center;
 }
 
-.files-cap__img-container {
-  width: 200px;
-}
+.files-cap {
+  &__img-container {
+    width: 200px;
+  }
 
-.files-cap__img-container > img {
-  width: 100%;
-}
+  &__img-container > img {
+    width: 100%;
+  }
 
-.files-cap__description {
-  text-align: center;
-  color: #000000;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 145%;
+  &__description {
+    text-align: center;
+    color: #000000;
+    font-weight: 500;
+    font-size: $font-size-sm;
+    line-height: 145%;
+  }
 }
 
 .app-main__chat-assistant-wrapper {
@@ -354,36 +357,35 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: $container-elem-padding;
 }
 
 .assistant-title__info {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   gap: 1rem;
   width: 100%;
-}
 
-.assistant-title__info__title-text {
-  font-size: 20px;
-  font-weight: 600;
-}
+  &__title-text {
+    font-size: 20px;
+    font-weight: 600;
+  }
 
-.assistant-title__info__assitant-name {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
+  &__assitant-name {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
 
-.assistant-title__info__assitant-name > p {
-  font-size: 15px;
-  font-weight: 600;
-}
+  &__assitant-name > p {
+    font-size: 15px;
+    font-weight: 600;
+  }
 
-.assistant-title__info__assitant-name > span {
-  font-size: 15px;
-  font-weight: 400;
-  color: #525252;
+  &__assitant-name > span {
+    font-size: 15px;
+    font-weight: 400;
+    color: #525252;
+  }
 }
 
 .assistant-title__badge {
@@ -393,7 +395,7 @@
   border-radius: 50%;
   border: none;
   margin-bottom: auto;
-  font-size: 16px;
+  font-size: $font-size-md;
 }
 
 .assistant-title__badge:hover {
@@ -420,30 +422,28 @@
   display: none;
   flex-direction: column;
   gap: 0.5rem;
-  padding: 1rem;
+  padding: $container-elem-padding;
   border-radius: 0.5rem;
-  font-size: 14px;
+  font-size: $font-size-sm;
 }
 
 .assistant-title__options__elem:hover {
   cursor: pointer;
-  color: #ee26c2;
+  color: $main-pink-color;
   transition: color 200ms ease-in;
 }
 
 /* ЧАТ: */
 /* --------------------------------------- */
 .app-main__chat {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   align-items: center;
   justify-content: center;
   background-color: #ebebeb;
 }
 
 .app-chat__descrip-and-actions {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   align-items: center;
   justify-content: center;
   padding: 3rem;
@@ -458,7 +458,7 @@
   text-align: center;
   color: #000000;
   font-weight: 500;
-  font-size: 14px;
+  font-size: $font-size-sm;
   line-height: 145%;
 }
 
@@ -467,21 +467,20 @@
   width: 100%;
   flex-direction: column;
   gap: 1rem;
-  padding: 1rem;
+  padding: $container-elem-padding;
   height: 400px;
   overflow-y: auto;
-}
 
-.app-chat__messages__message {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 80%;
-  padding: 1rem;
-  border-radius: 1rem;
-  background-color: white;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);
-  font-size: 15px;
+  &__message {
+    @include flex-column;
+    gap: 1rem;
+    width: 80%;
+    padding: $container-elem-padding;
+    border-radius: 1rem;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);
+    font-size: 15px;
+  }
 }
 
 .my-msg {
@@ -497,17 +496,19 @@
   gap: 1rem;
 }
 
-.assitant-msg__body__photo {
-  display: flex;
-  padding: 0.5rem;
-  border-radius: 50%;
-  background-color: #cbcbcb;
-}
+.assitant-msg__body {
+  &__photo {
+    display: flex;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background-color: #cbcbcb;
+  }
 
-.assitant-msg__body__photo > i {
-  width: 15px;
-  padding-left: 1px;
-  color: whitesmoke;
+  &__photo > i {
+    width: 15px;
+    padding-left: 1px;
+    color: whitesmoke;
+  }
 }
 
 .assitant-msg__from {
@@ -516,15 +517,14 @@
 
 .app-chat__reports {
   margin-left: auto;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
+  padding: $container-elem-padding;
+  @include flex-column;
   gap: 1rem;
 }
 
 .chat-reports__btn {
   font-weight: 500;
-  font-size: 14px;
+  font-size: $font-size-sm;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 1rem;
@@ -532,7 +532,7 @@
 
 .chat-reports__btn:hover {
   cursor: pointer;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: $elem-shadow-strong;
   transition: box-shadow 200ms ease-in;
 }
 
@@ -544,21 +544,20 @@
 }
 
 .get-media-plans-btn {
-  background-color: #ee26c2;
+  background-color: $main-pink-color;
   color: #ffffff;
 }
 
 /* ТЕЛО ЧАТА: */
 /* --------------------------------------- */
 .app-chat__body__wrapper {
-  padding: 1rem;
+  padding: $container-elem-padding;
   padding-bottom: 2rem;
   width: 100%;
 }
 
 .app-chat__body {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   gap: 0.5rem;
   width: 100%;
   background-color: white;
@@ -572,95 +571,98 @@
   outline: none;
   border: none;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: $container-elem-padding;
   resize: none;
 }
 
-.chat-body__actions {
+.chat-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-}
+  padding: $container-elem-padding;
 
-.chat-actions__add {
-  display: flex;
-  gap: 1rem;
-  padding: 0.5rem;
-  color: #9f9f9f;
-  font-size: 22px;
-}
+  &__add {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem;
+    color: #9f9f9f;
+    font-size: 22px;
 
-.chat-actions__add__file:hover,
-.chat-actions__add__img:hover {
-  cursor: pointer;
-  color: #b8b8b8;
-  transition: color 200ms ease-in;
-}
+    &__file:hover,
+    &__img:hover {
+      cursor: pointer;
+      color: #b8b8b8;
+      transition: color 200ms ease-in;
+    }
+  }
 
-.chat-actions__send-msg {
-  display: flex;
-  padding: 1rem;
-  border-radius: 50%;
-  background-color: #ee26c2;
-  color: whitesmoke;
-}
+  &__send-msg {
+    display: flex;
+    padding: $container-elem-padding;
+    border-radius: 50%;
+    background-color: $main-pink-color;
+    color: whitesmoke;
+  }
 
-.chat-actions__send-msg:hover {
-  cursor: pointer;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
-  transition: box-shadow 200ms ease-in;
+  &__send-msg:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    transition: box-shadow 200ms ease-in;
+  }
 }
 
 /* ----------------------------------------------------------------------------------------------------- */
 /* ----------------------------------------------- ФУТЕР: ---------------------------------------------- */
 /* ----------------------------------------------------------------------------------------------------- */
 .app-page__footer {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   gap: 1rem;
-  padding: 1rem;
+  padding: $container-elem-padding;
 }
 
-.app-footer__row {
-  display: flex;
-  flex-direction: column;
+.footer-row {
+  @include flex-column;
   gap: 1rem;
+
+  &__label {
+    font-size: 26px;
+    font-weight: 600;
+    color: #c3c3c3;
+  }
+
+  &__privacy:hover {
+    color: $main-pink-color;
+    transition: color 200ms ease-in;
+  }
+
+  &__lang {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 15px;
+    color: #525252;
+  }
+
+  &__lang > i {
+    color: #292d32;
+  }
 }
 
-.app-footer__row > a {
+.footer-row > a {
   color: #525252;
-  font-size: 14px;
+  font-size: $font-size-sm;
   cursor: pointer;
 }
 
-.footer-row__label {
-  font-size: 26px;
-  font-weight: 600;
-  color: #c3c3c3;
-}
-
-.footer-row__lang {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 15px;
-  color: #525252;
-}
-
-.footer-row__lang > i {
-  color: #292d32;
-}
-
-.footer-row__lang__list {
+.footer-lang-list {
   display: flex;
   gap: 0.5rem;
-}
 
-.footer-lang-list__elem:hover {
-  cursor: pointer;
-  color: #ee26c2;
-  transition: color 200ms ease-in;
+  &__elem:hover {
+    cursor: pointer;
+    color: $main-pink-color;
+    transition: color 200ms ease-in;
+  }
 }
 
 .footer-row__email,
@@ -681,13 +683,8 @@
 
 .footer-row__email__text:hover {
   cursor: pointer;
-  color: #ee26c2;
+  color: $main-pink-color;
   transition: color 200ms ease-in;
-}
-
-.footer-row__socials {
-  display: flex;
-  align-items: center;
 }
 
 .footer-row__socials__elem {
@@ -700,7 +697,7 @@
 
 .footer-row__socials__elem:hover {
   cursor: pointer;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: $elem-shadow-strong;
   transition: box-shadow 200ms ease-in;
 }
 
@@ -728,7 +725,7 @@
 }
 
 .footer-row__author {
-  font-size: 14px;
+  font-size: $font-size-sm;
   color: #525252;
   opacity: 0.5;
 }
@@ -737,36 +734,35 @@
 /* ------------------------------------------- 450px ------------------------------------------------ */
 /* -------------------------------------------------------------------------------------------------- */
 @media (min-width: 450px) {
-  .app-page__main {
-    display: flex;
-    flex-direction: column;
+  .app-main {
+    @include flex-column;
     gap: 1.5rem;
     padding-inline: 1rem;
-  }
 
-  .app-main__all-files,
-  .app-main__chat-assistant-wrapper {
-    padding: 1rem;
-    border-radius: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);
-  }
+    &__all-files,
+    &__chat-assistant-wrapper {
+      padding: $container-elem-padding;
+      border-radius: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);
+    }
 
-  .app-main__all-files {
-    gap: 1rem;
-  }
+    &__all-files {
+      gap: 1rem;
+    }
 
-  .app-main__assistant {
-    padding: 0;
-    padding-bottom: 1rem;
+    &__assistant {
+      padding: 0;
+      padding-bottom: 1rem;
+    }
   }
 
   .header-user-info__details {
     flex-direction: row-reverse;
     align-items: center;
-  }
 
-  .header-user-info__details__email {
-    line-height: 20px;
+    &__email {
+      line-height: 20px;
+    }
   }
 
   .all-files__plans-and-reports-wrapper {
@@ -806,10 +802,10 @@
   .app-page {
     background-color: #f5f5f5;
     gap: 1.5rem;
-  }
 
-  .app-page__header {
-    padding-inline: 2rem;
+    &__header {
+      padding-inline: 2rem;
+    }
   }
 
   .app-header__row {
@@ -820,14 +816,14 @@
   .header-user-info__details {
     gap: 1.5rem;
     margin-right: 2rem;
-  }
 
-  .header-user-info__details__email,
-  .header-user-info__details__revenue {
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    &__email,
+    &__revenue {
+      font-size: $font-size-md;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
   }
 
   .header-user-info__details__email__label,
@@ -835,7 +831,7 @@
     display: flex;
     padding: 0.6rem;
     border-radius: 50%;
-    background-color: #ee26c2;
+    background-color: $main-pink-color;
     color: whitesmoke;
   }
 
@@ -853,7 +849,7 @@
   }
 
   .header-user-info__details__revenue {
-    font-size: 16px;
+    font-size: $font-size-md;
     color: #000000;
     font-weight: 600;
   }
@@ -868,17 +864,16 @@
 
   /* МЕИН: */
   /* ------------------------------------------- */
-  .app-page__main {
+  .app-main {
     padding-inline: 2rem;
-  }
 
-  .app-main__all-files {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-    border-radius: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);
+    &__all-files {
+      @include flex-column;
+      gap: 1rem;
+      padding: $container-elem-padding;
+      border-radius: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);
+    }
   }
 
   .all-files__plans-and-reports-wrapper {
@@ -892,17 +887,17 @@
     flex-basis: 50%;
   }
 
-  .all-files__cap {
+  .files-cap {
     flex-direction: row;
     justify-content: space-between;
-  }
 
-  .files-cap__img-container {
-    width: 250px;
-  }
+    &__img-container {
+      width: 250px;
+    }
 
-  .files-cap__description {
-    font-size: 16px;
+    &__description {
+      font-size: $font-size-md;
+    }
   }
 
   .reports-list__empty-text,
@@ -913,33 +908,35 @@
   .assistant-title__info {
     flex-direction: row;
     align-items: center;
-  }
 
-  .assistant-title__info__assitant-name {
-    margin-left: auto;
-    margin-right: 2rem;
+    &__assitant-name {
+      margin-left: auto;
+      margin-right: 2rem;
+    }
   }
 
   .assistant-title__options {
-    font-size: 16px;
+    font-size: $font-size-md;
   }
 
-  .chat-descrip-and-actions__img-container > img {
-    width: 180px;
+  .chat-descrip-and-actions {
+    &__img-container > img {
+      width: 180px;
+    }
+
+    &__descrip-text {
+      font-size: $font-size-md;
+    }
   }
 
-  .chat-descrip-and-actions__descrip-text {
-    font-size: 16px;
-  }
-
-  .app-chat__reports {
+  .chat-reports {
     flex-direction: row-reverse;
     margin: 0;
     margin-right: auto;
-  }
 
-  .chat-reports__btn {
-    font-size: 16px;
+    &__btn {
+      font-size: $font-size-md;
+    }
   }
 
   .get-media-plans-btn {
@@ -961,11 +958,6 @@
   .footer-row__privacy {
     padding-top: 10px;
     font-size: 15px;
-  }
-
-  .footer-row__privacy:hover {
-    color: #ee26c2;
-    transition: color 200ms ease-in;
   }
 
   .app-page__footer div:nth-child(2) {
